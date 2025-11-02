@@ -603,9 +603,6 @@ npm cache clean --force
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## 👤 Author
-
-Your Name - [GitHub](https://github.com/your-username)
 
 ## 🙏 Acknowledgments
 
