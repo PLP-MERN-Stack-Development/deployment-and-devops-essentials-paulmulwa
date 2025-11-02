@@ -582,13 +582,10 @@ npm cache clean --force
 ## 📸 Screenshots
 
 ### CI/CD Pipeline
-![CI/CD Pipeline](docs/screenshots/cicd-pipeline.png)
+![CI/CD Pipeline](docs/screenshots/s3.png)
 
 ### Application Dashboard
-![Dashboard](docs/screenshots/dashboard.png)
-
-### Monitoring
-![Monitoring](docs/screenshots/monitoring.png)
+![Dashboard](docs/screenshots/s4.png)
 
 ## 🤝 Contributing
 
