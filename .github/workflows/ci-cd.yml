@@ -50,11 +50,11 @@ jobs:
       - name: Run backend tests
         env:
           MONGODB_URI: mongodb://localhost:27017/mern-test
+          MONGODB_URI_TEST: mongodb://localhost:27017/mern-test
           NODE_ENV: test
         run: |
           cd backend
-          npm test || echo "Tests failed but continuing..."
-        continue-on-error: true
+          npm test -- --passWithNoTests
 
       - name: Upload backend coverage
         uses: codecov/codecov-action@v3
