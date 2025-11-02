@@ -2,9 +2,13 @@
 
 A full-stack MERN (MongoDB, Express.js, React, Node.js) application with production-ready DevOps practices, CI/CD pipelines, and comprehensive monitoring.
 
-[![CI/CD Pipeline](https://github.com/your-username/your-repo/workflows/CI/CD%20Pipeline/badge.svg)](https://github.com/your-username/your-repo/actions)
-[![Code Quality](https://github.com/your-username/your-repo/workflows/Code%20Quality/badge.svg)](https://github.com/your-username/your-repo/actions)
+## 📸 Screenshots
 
+### CI/CD Pipeline
+![CI/CD Pipeline](docs/screenshots/s3.png)
+
+### Application Dashboard
+![Dashboard](docs/screenshots/s4.png)
 ## 🌐 Live Deployment
 
 - **Frontend:** [https://your-frontend-url.vercel.app](https://your-frontend-url.vercel.app)
