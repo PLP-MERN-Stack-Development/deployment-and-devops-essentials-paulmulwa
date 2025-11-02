@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API Test</title>
+</head>
+<body>
+    <h1>MERN API Tester</h1>
+    
+    <h2>1. Test Health Endpoint</h2>
+    <button onclick="testHealth()">Test Health</button>
+    <pre id="healthResult"></pre>
+    
+    <h2>2. Get All Tasks</h2>
+    <button onclick="getTasks()">Get Tasks</button>
+    <pre id="tasksResult"></pre>
+    
+    <h2>3. Create a Task</h2>
+    <input type="text" id="taskTitle" placeholder="Task Title" value="Test Task">
+    <input type="text" id="taskDesc" placeholder="Description" value="This is a test">
+    <select id="taskPriority">
+        <option value="low">Low</option>
+        <option value="medium" selected>Medium</option>
+        <option value="high">High</option>
+    </select>
+    <button onclick="createTask()">Create Task</button>
+    <pre id="createResult"></pre>
+    
+    <script>
+        const API_URL = 'http://localhost:5000/api';
+        
+        async function testHealth() {
+            try {
+                const response = await fetch(`${API_URL}/health`);
+                const data = await response.json();
+                document.getElementById('healthResult').textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('healthResult').textContent = 'Error: ' + error.message;
+            }
+        }
+        
+        async function getTasks() {
+            try {
+                const response = await fetch(`${API_URL}/tasks`);
+                const data = await response.json();
+                document.getElementById('tasksResult').textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('tasksResult').textContent = 'Error: ' + error.message;
+            }
+        }
+        
+        async function createTask() {
+            try {
+                const title = document.getElementById('taskTitle').value;
+                const description = document.getElementById('taskDesc').value;
+                const priority = document.getElementById('taskPriority').value;
+                
+                const response = await fetch(`${API_URL}/tasks`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        title,
+                        description,
+                        priority
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    document.getElementById('createResult').textContent = 'SUCCESS!\n' + JSON.stringify(data, null, 2);
+                } else {
+                    document.getElementById('createResult').textContent = 'ERROR!\n' + JSON.stringify(data, null, 2);
+                }
+            } catch (error) {
+                document.getElementById('createResult').textContent = 'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+</html>

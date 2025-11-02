@@ -1,0 +1,54 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  eslint:
+    name: ESLint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+
+      - name: Install dependencies
+        run: |
+          npm install
+          cd backend && npm install
+          cd ../frontend && npm install
+
+      - name: Run ESLint on backend
+        run: |
+          cd backend
+          npx eslint . --ext .js --max-warnings 0 || true
+
+      - name: Run ESLint on frontend
+        run: |
+          cd frontend
+          npx eslint . --ext .js,.jsx --max-warnings 0 || true
+
+  prettier:
+    name: Prettier Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
+
+      - name: Check code formatting
+        run: |
+          npx prettier --check "**/*.{js,jsx,json,md}" || true

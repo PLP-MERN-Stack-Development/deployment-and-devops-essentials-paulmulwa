@@ -1,0 +1,35 @@
+{
+  "name": "mern-deployment-project",
+  "version": "1.0.0",
+  "description": "Full MERN stack application with CI/CD and DevOps best practices",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "nodemon backend/server.js",
+    "client": "npm start --prefix frontend",
+    "build": "npm install && npm install --prefix frontend && npm run build --prefix frontend",
+    "test": "npm test --prefix backend && npm test --prefix frontend",
+    "lint": "eslint backend frontend --ext .js,.jsx",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
+  },
+  "keywords": [
+    "mern",
+    "deployment",
+    "devops",
+    "ci-cd"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  }
+}

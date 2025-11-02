@@ -1,0 +1,41 @@
+{
+  "name": "mern-app",
+  "description": "MERN stack application with DevOps",
+  "repository": "https://github.com/your-username/mern-app",
+  "website": "https://your-app.com",
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ],
+  "env": {
+    "NODE_ENV": {
+      "description": "Node environment",
+      "value": "production"
+    },
+    "MONGODB_URI": {
+      "description": "MongoDB connection string",
+      "required": true
+    },
+    "FRONTEND_URL": {
+      "description": "Frontend application URL",
+      "required": true
+    },
+    "SENTRY_DSN": {
+      "description": "Sentry DSN for error tracking",
+      "required": false
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "addons": [
+    {
+      "plan": "papertrail:choklad",
+      "as": "LOGGING"
+    }
+  ]
+}
